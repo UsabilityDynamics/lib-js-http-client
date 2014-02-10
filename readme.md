@@ -12,6 +12,19 @@ Uses pure XMLHttpRequest object. No frameworks required.
 * DELETE
 * HEAD
 
+### Example of using
+
+    ejs.client = ejs.HttpClient('http://127.0.0.1:9200');
+    var request = ejs.Request({indices: 'twitter', types: 'tweet'});
+
+    request.facet(ejs.TermsFacet('TERMS').field('terms'))
+      .filter(
+        ejs.TermsFilter('terms', ['a', 'g'])
+      )
+      .doSearch(function(results){
+        console.log(results);
+      });
+
 ## License
 
 (The MIT License)
