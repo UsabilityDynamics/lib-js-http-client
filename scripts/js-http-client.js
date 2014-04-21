@@ -13,7 +13,7 @@
   if (typeof exports !== 'undefined') {
     ejs = exports;
   } else {
-    if (root.ejs == null) {
+    if (root.ejs === null) {
       ejs = root.ejs = {};
     } else {
       ejs = root.ejs;
@@ -29,10 +29,11 @@
     var
 
       /**
-       * options
+       *
+       * @type type
        */
-      options = {
-        contentType: 'application/json'
+      headers = {
+        'Content-Type': 'application/json'
       },
 
       /**
@@ -60,16 +61,28 @@
             xmlhttp = false;
           }
         }
-        if (!xmlhttp && typeof XMLHttpRequest != 'undefined') {
+        if (!xmlhttp && typeof XMLHttpRequest !== 'undefined') {
           xmlhttp = new XMLHttpRequest();
         }
         return xmlhttp;
+      },
+
+      /**
+       *
+       * @param {type} XHR
+       * @param {type} headers
+       * @returns {undefined}
+       */
+      setHeaders = function( XHR, headers ) {
+        for( var i in headers ) {
+          XHR.setRequestHeader( i, headers[i] );
+        }
       };
 
     /**
      * check that the server path does no end with a slash
      */
-    if (server == null) {
+    if (server === null) {
       server = '';
     } else if (server.charAt(server.length - 1) === '/') {
       server = server.substring(0, server.length - 1);
@@ -82,7 +95,7 @@
        * @returns {_L5.ejs.HttpClient.Anonym$0|_L5.ejs.HttpClient.Anonym$0.server}
        */
       server: function (s) {
-        if (s == null) {
+        if (s === null) {
           return server;
         }
 
@@ -97,20 +110,12 @@
 
       /**
        *
-       * @param {type} oKey
-       * @param {type} oVal
-       * @returns {module.exportsb.HttpClient.options|module.exportsw.HttpClient.options|root.ejs.HttpClient.options|exports.HttpClient.options|_L5.ejs.HttpClient.options|options}
+       * @param {type} name
+       * @param {type} value
+       * @returns {undefined}
        */
-      option: function (oKey, oVal) {
-        if (oKey == null) {
-          return options;
-        }
-
-        if (oVal == null) {
-          return options[oKey];
-        }
-
-        options[oKey] = oVal;
+      addHeader: function ( name, value ) {
+        headers[name] = value;
       },
 
       /**
@@ -124,16 +129,16 @@
       get: function (path, data, successcb, errorcb) {
         var XHR = getXmlHttp();
         XHR.open('GET', getPath(path), true);
-        XHR.setRequestHeader('Content-Type', options.contentType);
-        XHR.onreadystatechange = function(e) {
-          if ( e.target.readyState == 4 ) {
+        setHeaders( XHR, headers );
+        XHR.onload = function(e) {
+          if ( e.target.readyState === 4 ) {
             if( e.target.status >= 200 && e.target.status < 300 || e.target.status === 304 ) {
               successcb(JSON.parse(e.target.response), e.target);
             } else {
               errorcb(JSON.parse(e.target.response), e.target);
             }
           }
-        }
+        };
         return XHR.send(data);
       },
 
@@ -148,16 +153,16 @@
       post: function (path, data, successcb, errorcb) {
         var XHR = getXmlHttp();
         XHR.open('POST', getPath(path), true);
-        XHR.setRequestHeader('Content-Type', options.contentType);
-        XHR.onreadystatechange = function(e) {
-          if ( e.target.readyState == 4 ) {
+        setHeaders( XHR, headers );
+        XHR.onload = function(e) {
+          if ( e.target.readyState === 4 ) {
             if( e.target.status >= 200 && e.target.status < 300 || e.target.status === 304 ) {
               successcb(JSON.parse(e.target.response), e.target);
             } else {
-              errorcb(JSON.parse(e.target.response), e.target);
+              errorcb(e.target.response, e.target);
             }
           }
-        }
+        };
         return XHR.send(data);
       },
 
@@ -172,16 +177,16 @@
       put: function (path, data, successcb, errorcb) {
         var XHR = getXmlHttp();
         XHR.open('PUT', getPath(path), true);
-        XHR.setRequestHeader('Content-Type', options.contentType);
-        XHR.onreadystatechange = function(e) {
-          if ( e.target.readyState == 4 ) {
+        setHeaders( XHR, headers );
+        XHR.onload = function(e) {
+          if ( e.target.readyState === 4 ) {
             if( e.target.status >= 200 && e.target.status < 300 || e.target.status === 304 ) {
               successcb(JSON.parse(e.target.response), e.target);
             } else {
               errorcb(JSON.parse(e.target.response), e.target);
             }
           }
-        }
+        };
         return XHR.send(data);
       },
 
@@ -196,16 +201,16 @@
       del: function (path, data, successcb, errorcb) {
         var XHR = getXmlHttp();
         XHR.open('DELETE', getPath(path), true);
-        XHR.setRequestHeader('Content-Type', options.contentType);
-        XHR.onreadystatechange = function(e) {
-          if ( e.target.readyState == 4 ) {
+        setHeaders( XHR, headers );
+        XHR.onload = function(e) {
+          if ( e.target.readyState === 4 ) {
             if( e.target.status >= 200 && e.target.status < 300 || e.target.status === 304 ) {
               successcb(JSON.parse(e.target.response), e.target);
             } else {
               errorcb(JSON.parse(e.target.response), e.target);
             }
           }
-        }
+        };
         return XHR.send(data);
       },
 
@@ -220,9 +225,9 @@
       head: function (path, data, successcb, errorcb) {
         var XHR = getXmlHttp();
         XHR.open('HEAD', getPath(path), true);
-        XHR.setRequestHeader('Content-Type', options.contentType);
-        XHR.onreadystatechange = function(e) {
-          if ( e.target.readyState == 4 ) {
+        setHeaders( XHR, headers );
+        XHR.onload = function(e) {
+          if ( e.target.readyState === 4 ) {
             if( e.target.status >= 200 && e.target.status < 300 || e.target.status === 304 ) {
               var headers = e.target.getAllResponseHeaders().split('\n'),
                 resp = {},
@@ -236,14 +241,14 @@
                 }
               }
 
-              if (successcb != null) {
+              if (successcb !== null) {
                 successcb(resp);
               }
             } else {
               errorcb(JSON.parse(e.target.response), e.target);
             }
           }
-        }
+        };
         return XHR.send(data);
       }
     };
