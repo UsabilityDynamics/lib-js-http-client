@@ -1,9 +1,23 @@
 /**
- * XMLHttpRequest Client for Elastic.js
- * @author UsabilityDynamics
+ * Universal XMLHttpRequest Client
+ *
+ * Copyright © 2012 Usability Dynamics, Inc. (usabilitydynamics.com)
+ *
+ * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+ * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+ * WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+ * DISCLAIMED. IN NO EVENT SHALL Alexandru Marasteanu BE LIABLE FOR ANY
+ * DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+ * (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+ * LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ * ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+ * (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+ * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */
+
 (function () {
-  'use strict';
+
+  "use strict";
 
   var
 
@@ -21,7 +35,7 @@
   }
 
   /**
-   *
+   * Http Client
    * @param {type} server
    * @returns {_L5.ejs.HttpClient.Anonym$0}
    */
@@ -29,7 +43,7 @@
     var
 
       /**
-       *
+       * Predefined headers
        * @type type
        */
       headers = {
@@ -37,7 +51,8 @@
       },
 
       /**
-       * method to ensure the path always starts with a slash
+       * Method to ensure the path always starts with a slash
+       * @param {type} path
        */
       getPath = function (path) {
         if (path.charAt(0) !== '/') {
@@ -48,7 +63,7 @@
       },
 
       /**
-       * cross-browser xmlhttprequest init
+       * Cross-browser xmlhttprequest init
        */
       getXmlHttp = function() {
         var xmlhttp;
@@ -68,7 +83,7 @@
       },
 
       /**
-       *
+       * Method to set additional headers
        * @param {type} XHR
        * @param {type} headers
        * @returns {undefined}
@@ -80,7 +95,7 @@
       };
 
     /**
-     * check that the server path does no end with a slash
+     * Check that the server path does no end with a slash
      */
     if (server === null) {
       server = '';
@@ -88,9 +103,13 @@
       server = server.substring(0, server.length - 1);
     }
 
+    /**
+     * Return instance with public methods
+     */
     return {
+
       /**
-       *
+       * Server endpoint
        * @param {type} s
        * @returns {_L5.ejs.HttpClient.Anonym$0|_L5.ejs.HttpClient.Anonym$0.server}
        */
@@ -109,7 +128,7 @@
       },
 
       /**
-       *
+       * Adds new header
        * @param {type} name
        * @param {type} value
        * @returns {undefined}
@@ -119,7 +138,7 @@
       },
 
       /**
-       *
+       * Fires GET request
        * @param {type} path
        * @param {type} data
        * @param {type} successcb
@@ -143,7 +162,7 @@
       },
 
       /**
-       *
+       * Fires POST request
        * @param {type} path
        * @param {type} data
        * @param {type} successcb
@@ -167,7 +186,7 @@
       },
 
       /**
-       *
+       * Fires PUT request
        * @param {type} path
        * @param {type} data
        * @param {type} successcb
@@ -191,14 +210,14 @@
       },
 
       /**
-       *
+       * Fires DELETE request
        * @param {type} path
        * @param {type} data
        * @param {type} successcb
        * @param {type} errorcb
        * @returns {unresolved}
        */
-      del: function (path, data, successcb, errorcb) {
+      delete: function (path, data, successcb, errorcb) {
         var XHR = getXmlHttp();
         XHR.open('DELETE', getPath(path), true);
         setHeaders( XHR, headers );
@@ -215,7 +234,7 @@
       },
 
       /**
-       *
+       * Fires HEAD request
        * @param {type} path
        * @param {type} data
        * @param {type} successcb
