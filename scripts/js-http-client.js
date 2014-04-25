@@ -27,7 +27,7 @@
   if (typeof exports !== 'undefined') {
     ejs = exports;
   } else {
-    if (root.ejs === null) {
+    if ( typeof root.ejs === 'undefined') {
       ejs = root.ejs = {};
     } else {
       ejs = root.ejs;
