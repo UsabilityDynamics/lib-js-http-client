@@ -1,7 +1,7 @@
 /**
  * Universal XMLHttpRequest Client
  *
- * Copyright © 2012 Usability Dynamics, Inc. (usabilitydynamics.com)
+ * Copyright 2012 Usability Dynamics, Inc. (usabilitydynamics.com)
  *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
  * ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
@@ -158,7 +158,8 @@
             }
           }
         };
-        return XHR.send(null);
+        XHR.send(null);
+        return XHR;
       },
 
       /**
@@ -182,7 +183,8 @@
             }
           }
         };
-        return XHR.send(data);
+        XHR.send(data);
+        return XHR;
       },
 
       /**
@@ -206,7 +208,8 @@
             }
           }
         };
-        return XHR.send(data);
+        XHR.send(data);
+        return XHR;
       },
 
       /**
@@ -230,7 +233,8 @@
             }
           }
         };
-        return XHR.send(data);
+        XHR.send(data);
+        return XHR;
       },
 
       /**
@@ -268,7 +272,8 @@
             }
           }
         };
-        return XHR.send(data);
+        XHR.send(data);
+        return XHR;
       }
     };
   };
