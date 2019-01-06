@@ -1,20 +1,20 @@
 {
   "name": "js-http-client",
   "description": "Javascript Http Client",
-  "version": "0.0.1",
-  "homepage": "http://github.com/UsabilityDynamics/lib-js-http-client",
+  "version": "0.1.0",
+  "homepage": "https://github.com/udx/lib-js-http-client",
   "author": {
     "name": "Usability Dynamics",
     "email": "info@UsabilityDynamics.com",
-    "url": "http://UsabilityDynamics.com"
+    "url": "https://www.usabilitydynamics.com"
   },
   "bugs": {
-    "url": "http://github.com/UsabilityDynamics/lib-js-http-client/issues"
+    "url": "https://github.com/udx/lib-js-http-client/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "http://github.com/UsabilityDynamics/lib-js-http-client/blob/master/LICENSE-MIT"
+      "url": "https://github.com/udx/lib-js-http-client/blob/master/readme.md#license"
     }
   ],
   "engines": {

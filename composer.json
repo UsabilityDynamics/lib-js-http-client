@@ -1,7 +1,7 @@
 {
-  "name": "usabilitydynamics/js-http-client",
+  "name": "udx/js-http-client",
   "type": "library",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Javascript Http Client",
   "require": {},
   "repositories": [
@@ -11,7 +11,7 @@
     }
   ],
   "minimum-stability": "dev",
-  "homepage": "http://github.com/UsabilityDynamics/lib-js-http-client",
+  "homepage": "https://github.com/udx/lib-js-http-client",
   "autoload": {
     "files": [
       "lib/js-http-client.php"
@@ -19,10 +19,10 @@
   },
   "extra": {
     "component": {
-      "name": "usabilitydynamics/lib-js-http-client",
-      "version": "0.0.1",
+      "name": "udx/lib-js-http-client",
+      "version": "0.1.0",
       "description": "Javascript Http Client",
-      "homepage": "http://github.com/UsabilityDynamics/lib-js-http-client",
+      "homepage": "https://github.com/udx/lib-js-http-client",
       "dependencies": {},
       "scripts": [
         "./scripts"
@@ -40,7 +40,7 @@
     }
   },
   "support": {
-    "issues": "http://github.com/UsabilityDynamics/lib-js-http-client/issues"
+    "issues": "https://github.com/udx/lib-js-http-client/issues"
   },
   "license": "MIT"
 }
